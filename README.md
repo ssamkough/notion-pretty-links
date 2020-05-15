@@ -1,44 +1,25 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Notion Pretty Links 🔗
 
-## Available Scripts
+Turning Notion's random path blarb to actual readable characters.
 
-In the project directory, you can run:
+## How it Works 🩰
 
-### `yarn start`
+1. Grab the path that you want to replace.
+2. Open up the extension.
+3. Paste the path in the in the "Path to Replace" input box.
+4. Type the path you want to see instead of it in "New Path".
+5. Click the submit button and you're set. Remove it by finding it in the list of custom paths and click x.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Technologies 🧺
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- [React](https://reactjs.org/)
 
-### `yarn test`
+## Resources 🙏
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [Building a Chrome Extension Using React](https://medium.com/@gilfink/building-a-chrome-extension-using-react-c5bfe45aaf36)
+- [Build a Chrome Extension in React (Full Project Download)](https://www.youtube.com/watch?v=4x0lQu1TOCQ)
+- [How can I get the URL of the current tab from a Google Chrome extension?](https://stackoverflow.com/questions/1979583/how-can-i-get-the-url-of-the-current-tab-from-a-google-chrome-extension)
 
-### `yarn build`
+## Todo ☑️
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Figure out how to solve error for "Refused to execute inline script because it violates the following Content Security Policy directive: "script-src 'self' 'unsafe-eval'". Either the 'unsafe-inline' keyword, a hash ('sha256-???'), or a nonce ('nonce-...') is required to enable inline execution."
