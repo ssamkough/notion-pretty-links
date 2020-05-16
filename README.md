@@ -26,4 +26,6 @@ Turning Notion's random path blarb to actual readable characters.
 
 ## Todo ☑️
 
-- Figure out how to solve error for "Refused to execute inline script because it violates the following Content Security Policy directive: "script-src 'self' 'unsafe-eval'". Either the 'unsafe-inline' keyword, a hash ('sha256-???'), or a nonce ('nonce-...') is required to enable inline execution."
+- Be able to add items to list
+- Get list of items to show up
+- Setup some sort of database (redis probably)
