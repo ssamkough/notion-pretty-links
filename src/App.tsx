@@ -11,15 +11,15 @@ const App = () => {
         <Router>
             <Container id="app-outer-container">
                 <Container id="app-inner-container">
-                    <Row>
+                    <Row id="row-nav-bar">
                         <Col>
                             <NavigationBar />
                         </Col>
                     </Row>
-                    <Row>
+                    <Row id="row-page">
                         <Col>
                             <Switch>
-                                <Route exact path="/">
+                                <Route path="/">
                                     <PathReplacer />
                                 </Route>
                                 <Route path="/list">
