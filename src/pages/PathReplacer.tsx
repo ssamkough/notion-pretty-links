@@ -25,6 +25,13 @@ const PathList = () => {
                         aria-describedby="new-path"
                     />
                 </Form.Group>
+
+                <div className="float-left">
+                    <Button id="mock-data-btn" value="Submit" variant="dark">
+                        <span className="replace-btn-text">Place Mock Data</span>
+                    </Button>
+                </div>
+
                 <div className="float-right">
                     <Button id="replace-btn" onClick={() => setShow(true)} value="Submit" variant="dark">
                         <span className="replace-btn-text">Replace</span>
