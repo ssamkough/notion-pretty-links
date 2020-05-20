@@ -1,23 +1,23 @@
 {
-  "manifest_version": 2,
-  "name": "Notion Pretty Links",
-  "author": "Sammy Samkough",
-  "version": "1.0.1",
-  "description": "Replaces ugly Notion path blarb with your own custom path.",
-  "browser_action": {
-    "default_icon": "./assets/notion-icon.png",
-    "default_popup": "index.html",
-    "default_title": "Pretty your Notion links."
-  },
-  "background": {
-    "scripts": ["./js/background.js"]
-  },
-  "content_scripts": [
-    {
-      "matches": ["*://notion.so/*", "*://www.notion.so/*"],
-      "js": ["./js/content.js"]
-    }
-  ],
-  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
-  "permissions": ["tabs"]
+    "manifest_version": 2,
+    "name": "Notion Pretty Links",
+    "author": "Sammy Samkough",
+    "version": "1.0.1",
+    "description": "Replaces ugly Notion path blarb with your own custom path.",
+    "browser_action": {
+        "default_icon": "./assets/blue-notion-icon.png",
+        "default_popup": "index.html",
+        "default_title": "Pretty your Notion links."
+    },
+    "background": {
+        "scripts": ["./js/background.js"]
+    },
+    "content_scripts": [
+        {
+            "matches": ["*://notion.so/*", "*://www.notion.so/*"],
+            "js": ["./js/content.js"]
+        }
+    ],
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+    "permissions": ["tabs", "storage"]
 }
