@@ -3,6 +3,8 @@ import { Row, Col, Button } from 'react-bootstrap';
 
 const PathItem = (pathItem: any) => {
     const item = pathItem.pathItem;
+    console.log('pathItem page: ', pathItem);
+
     return (
         <div className="path-item-outer-container">
             <div className="path-item-inner-container">
@@ -18,7 +20,7 @@ const PathItem = (pathItem: any) => {
                         <span className="path-item-key">Old Path:</span>{' '}
                     </Col>
                     <Col>
-                        <span>{item.replaced_path}</span>
+                        <span>{pathItem.replaced_path}</span>
                     </Col>
                 </Row>
                 <Row>
@@ -26,7 +28,7 @@ const PathItem = (pathItem: any) => {
                         <span>New Path:</span>{' '}
                     </Col>
                     <Col>
-                        <span>{item.new_path}</span>
+                        <span>{pathItem.new_path}</span>
                     </Col>
                 </Row>
             </div>
