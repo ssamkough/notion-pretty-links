@@ -10,6 +10,12 @@ Turning Notion's random path blarb to actual readable characters.
 4. Type the path you want to see instead of it in "New Path".
 5. Click the submit button and you're set. Remove it by finding it in the list of custom paths and click x.
 
+## Architecture 📐
+
+### Storage 💾
+
+-   To store the paths I utilize Google Chrome's [chrome.storage](https://developer.chrome.com/extensions/storage).
+
 ## Technologies 🧺
 
 -   [React](https://reactjs.org/)
@@ -23,12 +29,13 @@ Turning Notion's random path blarb to actual readable characters.
 -   [Get URL and URL Parts in JavaScript](https://css-tricks.com/snippets/javascript/get-url-and-url-parts-in-javascript/)
 -   [How do I modify the URL without reloading the page?](https://stackoverflow.com/questions/824349/how-do-i-modify-the-url-without-reloading-the-page)
 -   [History API](https://developer.mozilla.org/en-US/docs/Web/API/History_API)
+-   [Get all keys from Chrome Storage](https://stackoverflow.com/questions/18150774/get-all-keys-from-chrome-storage)
+-   [chrome.storage](https://developer.chrome.com/extensions/storage)
+-   [How to fetch data with React Hooks?](https://www.robinwieruch.de/react-hooks-fetch-data)
 
 ## Todo ☑️
 
--   Figure out how to get local storage in chrome extension
--   Replace a path (put old path and new path)
 -   Fix error of root page not loading when opening popup
+-   Replace a path (put old path and new path)
 -   Be able to add items to list
--   Be able to remove items from list
--   Setup some sort of database (redis probably)
+-   Be able to remove items from list (need to figure out how to add listeners to x button)
