@@ -11,7 +11,7 @@ function loadPaths() {
         
         console.log(items);
         for (let [key, value] of Object.entries(items)) {
-            console.log(`${key}: ${value}`);
+            // console.log(`${key}: ${value}`);
             // let testLink = notionSpecifiedLink + '/' + value;
             // if (testLink == fullUrl) {
             //     console.log(`Got ${key}: ${value}`);
@@ -49,6 +49,7 @@ function init() {
 init();
 
 function main(message, sender, sendResponse) {
+    console.log("main");
     if (message.code === 'gotUrl') {
         console.log(message.code);
     }
@@ -56,22 +57,12 @@ function main(message, sender, sendResponse) {
     if (message.code === 'addPath') {
         console.log(message.code);
         
-        const replacedPath = message.replaced_path;
-        const newPath = message.new_path;
+        const key = message.new_path;
+        let storageObj = {}
+        storageObj[key] = message.replaced_path;
 
-        chrome.storage.sync.set({ "replaced_path": replacedPath, "new_path": newPath }, function () {
-            console.log('replaced path: ' + replacedPath + ", new path: " + newPath);
+        chrome.storage.sync.set(storageObj, function () {
+            console.log("Replacing " + storageObj[key] + " with " + key + ".");
         });
-    }
-
-    if (message.code === 'placeMockData') {
-        const replacedPaths = ["replacedPath1","replacedPath2","replacedPath3","replacedPath4"]
-        const newPaths = ["testValuePath1","testValuePath2","testValuePath3","testValuePath4"]
-
-        for (let i = 0; i < replacedPaths.length; i++) {
-            chrome.storage.sync.set({ "replaced_path": replacedPaths[i], "new_path": newPaths[i] }, function () {
-                console.log('replaced path: ' + replacedPaths[i] + ", new path: " + newPaths[i]);
-            });
-        }
     }
 }
