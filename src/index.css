@@ -16,7 +16,15 @@ body {
 }
 
 #app-inner-container {
-    padding: 5px;
+    padding: 20px;
+}
+
+#list-page {
+    display: none;
+    height: 210px;
+    width: 300px;
+    overflow: scroll;
+    overflow-x: hidden;
 }
 
 .replace-btn-text {
@@ -31,13 +39,6 @@ body {
     position: absolute;
     top: 2.5vw;
     left: 5vw;
-}
-
-.list-page {
-    height: 210px;
-    width: 300px;
-    overflow: scroll;
-    overflow-x: hidden;
 }
 
 .path-item-outer-container {
