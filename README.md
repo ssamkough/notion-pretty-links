@@ -35,7 +35,10 @@ Turning Notion's random path blarb to actual readable characters.
 
 ## Todo ☑️
 
--   Fix error of root page not loading when opening popup
--   Replace a path (put old path and new path)
--   Be able to add items to list
--   Be able to remove items from list (need to figure out how to add listeners to x button)
+-   Do the thing we want to do: replace a path that we added (put old path and new path)
+-   Update list without having to refresh
+-   Fix the ugly code in PathItem for object
+-   Fix styles, especially for PathItem
+-   Make a copy current path (copies path of current page and adds to replaced path)
+-   Make a clear button
+-   Write a clear diagram of how this works
