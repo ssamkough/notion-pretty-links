@@ -3,21 +3,20 @@ function loadPaths() {
     console.log('loading');
 
     chrome.storage.sync.get(null, function (items) {
-        // let fullUrl = window.location.protocol + '//' + window.location.host + '/' + window.location.pathname;
-        // let notionWorkspace = window.location.pathname.split('/')[1];
-
-        // let notionLink = window.location.protocol + '//' + window.location.host + '/' + notionWorkspace;
-        // let notionSpecifiedLink = window.location.protocol + '//' + window.location.host + '//' + notionWorkspace;
+        let fullUrl = window.location.protocol + '//' + window.location.host + '/' + window.location.pathname;
+        let notionWorkspace = window.location.pathname.split('/')[1];
+        let notionSpecifiedLink = window.location.protocol + '//' + window.location.host + '//' + notionWorkspace;
         
         console.log(items);
         for (let [key, value] of Object.entries(items)) {
-            // console.log(`${key}: ${value}`);
-            // let testLink = notionSpecifiedLink + '/' + value;
-            // if (testLink == fullUrl) {
-            //     console.log(`Got ${key}: ${value}`);
-            //     console.log('got em');
-            //     window.history.pushState("test", '', key);
-            // }
+            let testLink = notionSpecifiedLink + '/' + value;
+            
+            console.log("test link:", testLink);
+            console.log("full url:", fullUrl);
+            if (testLink == fullUrl) {
+                console.log(`Switched ${key}: ${value}`);
+                window.history.pushState(key, '', key);
+            }
         }
     });
 }
