@@ -9,39 +9,34 @@ const MainPage = () => {
     const [show, setShow] = useState(false);
     const [btnClick, setBtnClick] = useState(false);
 
-    useEffect(
-        () => {
-            console.log('ran use effect');
-            const fetchData = async () => {
-                setIsError(false);
+    useEffect(() => {
+        console.log('ran use effect');
+        const fetchData = async () => {
+            setIsError(false);
 
-                try {
-                    await chrome.storage.sync.get(null, function (items: any) {
-                        setPathData(items);
-                    });
-                } catch (error) {
-                    setIsError(true);
-                    console.log('Error:\n', error);
-                }
-            };
+            try {
+                await chrome.storage.sync.get(null, function (items: any) {
+                    setPathData(items);
+                });
+            } catch (error) {
+                setIsError(true);
+                console.log('Error:\n', error);
+            }
+        };
 
-            fetchData();
-        },
-        [
-            /* btnClick */
-        ],
-    );
+        fetchData();
+    }, [btnClick]);
 
     const replaceBtnClicked = () => {
         setShow(true);
 
-        setTimeout(function () {
-            if (btnClick) {
-                setBtnClick(false);
-            } else {
-                setBtnClick(true);
-            }
-        }, 1000);
+        if (btnClick) {
+            setBtnClick(false);
+            console.log('false');
+        } else {
+            setBtnClick(true);
+            console.log('true');
+        }
     };
 
     return (
