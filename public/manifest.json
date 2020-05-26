@@ -9,16 +9,15 @@
         "default_popup": "index.html",
         "default_title": "Pretty your Notion links."
     },
-    "background": {
-        "scripts": ["./js/background.js"]
-    },
     "content_scripts": [
         {
             "matches": ["*://notion.so/*", "*://www.notion.so/*"],
-            "js": ["./js/content.js"],
-            "run_at": "document_end"
+            "js": ["./js/content.js"]
         }
     ],
+    "background": {
+        "scripts": ["./js/background.js"]
+    },
     "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
     "permissions": ["tabs", "storage"]
 }
