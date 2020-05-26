@@ -37,7 +37,7 @@ body {
 
 .added-path-toast {
     position: absolute;
-    top: 2.5vw;
+    top: 0vh;
     left: 5vw;
 }
 
