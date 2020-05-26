@@ -32,13 +32,16 @@ Turning Notion's random path blarb to actual readable characters.
 -   [Get all keys from Chrome Storage](https://stackoverflow.com/questions/18150774/get-all-keys-from-chrome-storage)
 -   [chrome.storage](https://developer.chrome.com/extensions/storage)
 -   [How to fetch data with React Hooks?](https://www.robinwieruch.de/react-hooks-fetch-data)
+-   [Document.readyState](https://developer.mozilla.org/en-US/docs/Web/API/Document/readyState)
 
 ## Todo ☑️
 
--   Do the thing we want to do: replace a path that we added (put old path and new path)
--   Update list without having to refresh
+-   Update list without having to refresh for delete (make sure update works)
 -   Fix the ugly code in PathItem for object
+-   Fix issue where user tries to refresh though because it might not reroute it to the same one
+-   If I add one to the list and it's for the path a user is on, I need to change it on sight
+-   When users are switching around from notion page to notion page, I need to detect when a url changes to be able to update it if it has a key
 -   Fix styles, especially for PathItem
 -   Make a copy current path (copies path of current page and adds to replaced path)
--   Make a clear button
+-   Make a clear button (clears all items)
 -   Write a clear diagram of how this works
