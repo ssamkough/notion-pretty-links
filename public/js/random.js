@@ -1,4 +1,23 @@
 // random functions used to try things
+window.onhashchange = urlChange;
+
+window.addEventListener('hashchange', urlChange, false);
+
+window.addEventListener('popstate', urlChange);
+
+window.addEventListener('popstate', function (event) {
+    // Log the state data to the console
+    console.log(event.state);
+});
+
+window.onpopstate = function(event) {
+    console.log("location: " + document.location + ", state: " + JSON.stringify(event.state));
+};
+
+window.onhashchange = function() { 
+    console.log("onhashchange tester")  
+}
+
 window.onload = function() {
     console.log("window.onload")
 };
