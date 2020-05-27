@@ -1,17 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Row, Col, Button } from 'react-bootstrap';
 
 const PathItem = (replacedPath: any, newPath: any) => {
-    console.log('replaced path: ', replacedPath);
-    console.log('new path: ', newPath);
+    const [btnClick, setBtnClick] = useState(false);
 
     let rPath = replacedPath.replacedPath;
     let nPath = replacedPath.newPath;
 
     const removeItem = () => {
         chrome.storage.sync.remove(nPath, function () {
-            console.log('Removed ' + nPath + ', ' + rPath + '!');
+            // console.log('Removed ' + nPath + ', ' + rPath + '!');
         });
+
+        if (btnClick) {
+            setBtnClick(false);
+            console.log('x false');
+        } else {
+            setBtnClick(true);
+            console.log('x true');
+        }
     };
 
     return (
@@ -36,7 +43,7 @@ const PathItem = (replacedPath: any, newPath: any) => {
                         <span>New Path:</span>{' '}
                     </Col>
                     <Col>
-                        <span>{rPath.substring(0, 7)}...</span>
+                        <span>{nPath.substring(0, 7)}...</span>
                     </Col>
                 </Row>
                 <Row>
@@ -44,7 +51,7 @@ const PathItem = (replacedPath: any, newPath: any) => {
                         <span className="path-item-key ml-3">Old Path:</span>{' '}
                     </Col>
                     <Col>
-                        <span>{nPath.substring(0, 7)}...</span>
+                        <span>{rPath.substring(0, 7)}...</span>
                     </Col>
                 </Row>
             </div>
