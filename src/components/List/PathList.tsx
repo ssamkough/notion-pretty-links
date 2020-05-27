@@ -4,7 +4,7 @@ import { Row, Col } from 'react-bootstrap';
 import PathItem from './PathItem';
 
 const PathList = ({ pathObj }: { pathObj: any }) => {
-    console.log('pathList page: ', pathObj);
+    // console.log('pathList page: ', pathObj);
     return (
         <div>
             <Row>
