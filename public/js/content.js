@@ -1,6 +1,42 @@
+/* variables */
+let urloc = location.href;
+/* end variables */
+
 /* functions */
-function urlChange() {
-    console.log("url is changed")
+function stateChanged(e) {
+    console.log("state:", e);
+}
+
+function bodyClicked() {
+    console.log("clicked")
+    console.log("urlloc:", urloc);
+    console.log("location:", location.href);
+    if(urloc !== location.href) {
+        console.log("url changed");
+        replacePath();
+        urloc = location.href;
+    }
+}
+
+function replacePath() {
+    console.log("replacepath")
+    chrome.storage.sync.get(null, function (items) {
+        let fullUrl = window.location.protocol + '//' + window.location.host + '/' + window.location.pathname;
+        let notionWorkspace = window.location.pathname.split('/')[1];
+        let notionSpecifiedLink = window.location.protocol + '//' + window.location.host + '//' + notionWorkspace;
+
+        for (let [key, value] of Object.entries(items)) {
+            let testLink = notionSpecifiedLink + '/' + value;
+
+            console.log("test link:", testLink);
+            console.log("full url:", fullUrl);
+
+            if (testLink == fullUrl) {
+                console.log(`Switched ${key}: ${value}`);
+                window.history.pushState(key, '', key);
+            }
+        }
+    });
 }
 
 function loadPaths() {
@@ -9,14 +45,12 @@ function loadPaths() {
         let notionWorkspace = window.location.pathname.split('/')[1];
         let notionSpecifiedLink = window.location.protocol + '//' + window.location.host + '//' + notionWorkspace;
         
-        // console.log(items);
         document.onreadystatechange = function () {
             if(document.readyState === "complete") {
                 for (let [key, value] of Object.entries(items)) {
                     let testLink = notionSpecifiedLink + '/' + value;
-                    
+
                     if (testLink == fullUrl) {
-                        // console.log(`Switched ${key}: ${value}`);
                         window.history.pushState(key, '', key);
                     }
                 }
@@ -24,28 +58,18 @@ function loadPaths() {
         }
     });
 }
-
-function replacePath(event) {
-    let replacedPath = document.getElementById('path-to-replace-input').innerHTML;
-    let newPath = document.getElementById('new-path-input').innerHTML;
-}
-
-function removePath() {}
 /* end functions */
 
 function init() {
+    console.log("init");
+
     // functions
     loadPaths();
 
     // listeners
     chrome.runtime.onMessage.addListener(main);
-    // window.onhashchange = urlChange;
-    // window.addEventListener('hashchange', urlChange, false);
-    window.addEventListener('popstate', urlChange);
-    window.addEventListener('popstate', function (event) {
-        // Log the state data to the console
-        console.log(event.state);
-    });
+    document.body.addEventListener('click', bodyClicked);
+    document.addEventListener('readystatechange', stateChanged);
 }
 
 init();
@@ -62,8 +86,8 @@ function main(message, sender, sendResponse) {
         let storageObj = {}
         storageObj[key] = message.replaced_path;
 
-        chrome.storage.sync.set(storageObj, function () {
-            // console.log("Replacing " + storageObj[key] + " with " + key + ".");
-        });
+        // chrome.storage.sync.set(storageObj, function () {
+        //     console.log("Replacing " + storageObj[key] + " with " + key + ".");
+        // });
     }
 }
