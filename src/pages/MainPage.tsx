@@ -5,9 +5,11 @@ import PathList from '../components/List/PathList';
 
 const MainPage = () => {
     const [pathData, setPathData] = useState({});
-    const [isError, setIsError] = useState(false);
+    const [replacePath, setReplacePath] = useState('');
+    const [newPath, setNewPath] = useState('');
     const [show, setShow] = useState(false);
     const [btnClick, setBtnClick] = useState(false);
+    const [isError, setIsError] = useState(false);
 
     useEffect(() => {
         console.log('ran use effect');
@@ -17,6 +19,7 @@ const MainPage = () => {
             try {
                 await chrome.storage.sync.get(null, function (items: any) {
                     setPathData(items);
+                    console.log('items:', items);
                 });
             } catch (error) {
                 setIsError(true);
@@ -27,15 +30,28 @@ const MainPage = () => {
         fetchData();
     }, [btnClick]);
 
+    const handleChange = (e: any, path: string) => {
+        if (path === 'replace') {
+            setReplacePath(e.target.value);
+        } else if (path === 'new') {
+            setNewPath(e.target.value);
+        }
+    };
+
     const replaceBtnClicked = () => {
         setShow(true);
 
+        let storageObj: any = {};
+        storageObj[newPath] = replacePath;
+
+        chrome.storage.sync.set(storageObj, function () {
+            // console.log('Replacing ' + storageObj[newPath] + ' with ' + newPath + '.');
+        });
+
         if (btnClick) {
             setBtnClick(false);
-            console.log('false');
         } else {
             setBtnClick(true);
-            console.log('true');
         }
     };
 
@@ -47,6 +63,7 @@ const MainPage = () => {
                         <Form.Label>Path to Replace</Form.Label>
                         <Form.Control
                             id="path-to-replace-input"
+                            onChange={(e: any) => handleChange(e, 'replace')}
                             placeholder="Path to Replace"
                             aria-label="Path-to-Replace"
                             aria-describedby="path-to-replace"
@@ -56,6 +73,7 @@ const MainPage = () => {
                         <Form.Label>New Path</Form.Label>
                         <Form.Control
                             id="new-path-input"
+                            onChange={(e: any) => handleChange(e, 'new')}
                             placeholder="New Path"
                             aria-label="New-Path"
                             aria-describedby="new-path"
