@@ -36,12 +36,13 @@ Turning Notion's random path blarb to actual readable characters.
 
 ## Todo ☑️
 
--   Update list without having to refresh for delete (make sure update works)
--   Fix the ugly code in PathItem for object
+-   Update list without having to refresh for delete item
+-   When users are switching around from notion page to notion page, I need to detect when a url changes to be able to update it if it has a key
 -   Fix issue where user tries to refresh though because it might not reroute it to the same one
 -   If I add one to the list and it's for the path a user is on, I need to change it on sight
--   When users are switching around from notion page to notion page, I need to detect when a url changes to be able to update it if it has a key
--   Fix styles, especially for PathItem
+-   Fix styles, especially for PathItem and toast location
 -   Make a copy current path (copies path of current page and adds to replaced path)
+-   Fix the ugly code in PathItem for object
+-   Once added an item, clear the input
 -   Make a clear button (clears all items)
 -   Write a clear diagram of how this works
