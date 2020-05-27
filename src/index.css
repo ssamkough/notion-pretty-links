@@ -21,10 +21,12 @@ body {
 
 #list-page {
     display: none;
-    height: 210px;
-    width: 300px;
-    overflow: scroll;
+}
+
+#main-page {
+    overflow: hidden;
     overflow-x: hidden;
+    height: 220px;
 }
 
 .replace-btn-text {
