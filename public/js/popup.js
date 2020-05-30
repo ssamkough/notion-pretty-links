@@ -38,7 +38,7 @@ function replacePath() {
 function sendReplacePath(tabs) {
     let replacedPath = document.getElementById('path-to-replace-input').value;
     let newPath = document.getElementById('new-path-input').value;
-
+    
     chrome.tabs.sendMessage(tabId, { code: 'addPath', replaced_path: replacedPath, new_path: newPath });
 
     replacedPath = '';
