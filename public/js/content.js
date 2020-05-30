@@ -52,6 +52,7 @@ function loadPaths() {
 
                     if (testLink == fullUrl) {
                         window.history.pushState(key, '', key);
+                        console.log("pushed key")
                     }
                 }
             }
@@ -80,14 +81,13 @@ function main(message, sender, sendResponse) {
     }
 
     if (message.code === 'addPath') {
-        // console.log(message.code);
-        
         const key = message.new_path;
-        let storageObj = {}
-        storageObj[key] = message.replaced_path;
+        const originalPath = message.replaced_path;
+        
+        let notionWorkspacePath = window.location.pathname.split('/')[2];
 
-        // chrome.storage.sync.set(storageObj, function () {
-        //     console.log("Replacing " + storageObj[key] + " with " + key + ".");
-        // });
+        if (notionWorkspacePath == originalPath) {
+            window.history.pushState(key, '', key);
+        }
     }
 }
