@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
 import { Row, Col, Button } from 'react-bootstrap';
 
-const PathItem = (replacedPath: any, newPath: any) => {
+const PathItem = (replacedPath: any, newPath: any, setXButton: any) => {
+    console.log('pathItem:', setXButton);
     const [btnClick, setBtnClick] = useState(false);
 
     let rPath = replacedPath.replacedPath;
     let nPath = replacedPath.newPath;
 
     const removeItem = () => {
-        chrome.storage.sync.remove(nPath, function () {
-            // console.log('Removed ' + nPath + ', ' + rPath + '!');
-        });
+        chrome.storage.sync.remove(nPath, function () {});
 
         if (btnClick) {
             setBtnClick(false);
+            setXButton(false);
             console.log('x false');
         } else {
             setBtnClick(true);
+            setXButton(true);
             console.log('x true');
         }
     };

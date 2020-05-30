@@ -9,6 +9,7 @@ const MainPage = () => {
     const [newPath, setNewPath] = useState('');
     const [show, setShow] = useState(false);
     const [btnClick, setBtnClick] = useState(false);
+    const [xBtnClick, setXBtnClick] = useState(false);
     const [isError, setIsError] = useState(false);
 
     useEffect(() => {
@@ -28,7 +29,7 @@ const MainPage = () => {
         };
 
         fetchData();
-    }, [btnClick]);
+    }, [btnClick, xBtnClick]);
 
     const handleChange = (e: any, path: string) => {
         if (path === 'replace') {
@@ -44,9 +45,7 @@ const MainPage = () => {
         let storageObj: any = {};
         storageObj[newPath] = replacePath;
 
-        chrome.storage.sync.set(storageObj, function () {
-            // console.log('Replacing ' + storageObj[newPath] + ' with ' + newPath + '.');
-        });
+        chrome.storage.sync.set(storageObj, function () {});
 
         if (btnClick) {
             setBtnClick(false);
@@ -100,7 +99,7 @@ const MainPage = () => {
                 ) : Object.keys(pathData).length === 0 ? (
                     <div>No items at the moment!</div>
                 ) : (
-                    <PathList pathObj={pathData} />
+                    <PathList pathObj={pathData} setXBtn={setXBtnClick} />
                 )}
             </div>
         </div>
